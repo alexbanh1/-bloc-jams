@@ -30,6 +30,16 @@ body {
     max-width: 64rem;
 }
 
+.clearfix::before,
+.clearfix::after {
+   content: " ";
+   display: table;
+}
+
+.clearfix::after {
+   clear: both;
+}
+
  /* Medium and small screens small tablets / big phones (640px) */
  @media (min-width: 640px) { /* default font size is 16 px on most browsers, which is puny */
      html {font-size: 112%; }/* Style information will go here */
