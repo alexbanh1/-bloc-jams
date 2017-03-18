@@ -82,12 +82,14 @@ var setCurrentAlbum = function(album) {
  };
  
  window.onload = function() {
+    
     setCurrentAlbum(albumPicasso);
     
-    var albumList = [albumPicasso, albumMarconi, albumMonkeys];
     var index = 1;
+    var albumList = [albumPicasso, albumMarconi, albumMonkeys];
+    
     albumImage.addEventListener("click", function(event) {
-        setCurrentAlbum(album[index]);  
+        setCurrentAlbum(albumList[index]);  
         index++;
         if (index == albumList.length) {
             index = 0;
