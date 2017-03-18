@@ -33,7 +33,8 @@ var albumPicasso = {
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
-      + '  <td class="song-item-number">' + songNumber + '</td>'
+      + '  <td class="song-item-number" data-song-number="' + songNumber + '">' + songNumber + '</td>'
+     // allows us to store the song number as data in an attribute  
       + '  <td class="song-item-title">' + songName + '</td>'
       + '  <td class="song-item-duration">' + songLength + '</td>'
       + '</tr>'
@@ -64,7 +65,33 @@ var setCurrentAlbum = function(album) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
      }
  };
- 
- window.onload = function() {
+
+// elements we need to add event listeners to
+
+var songListContainer = document.getElementsByClassName('album-view-song-list')[0];
+var songRows = document.getElementsByClassName('album-view-song-item');
+
+
+var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
+
+window.onload = function() {
      setCurrentAlbum(albumPicasso);
+ 
+     songListContainer.addEventListener('mouseover', function(event) {
+         // #1 stores the 0th element with class album-view-song-list in console
+         if (event.target.parentElement.className === 'album-view-song-item') {
+            event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
+            // changes the song number to populate with play button template as above 
+            // query selector method used b/c need to return only one single element with specified class
+         }
+     });
+    
+    for (var i = 0; i < songRows.length; i++) {
+         songRows[i].addEventListener('mouseleave', function(event) {
+             // Revert the content back to the number
+             this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
+             // How exactly does this make song-item-number a number again?
+         });
+     }
+
  };
