@@ -1,30 +1,31 @@
 body.album {
-     background-image: url(../assets/images/blurred_backgrounds/blur_bg_3.jpg);
-     background-repeat: no-repeat;
-     background-attachment: fixed;
-     background-position: center center;
-     background-size: cover;
- }
+    background-image: url(../assets/images/blurred_backgrounds/blur_bg_3.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    padding-bottom: 200px;
+}
  
- .album-cover-art {
-     position: relative;
-     left: 20%;
-     margin-top: 1rem;
-     width: 60%;
- }
+.album-cover-art {
+    position: relative;
+    left: 20%;
+    margin-top: 1rem;
+    width: 60%;
+}
  
- .album-view-details {
-     position: relative;
-     top: 1.5rem;
-     padding: 1rem;
- }
+.album-view-details {
+    position: relative;
+    top: 1.5rem;
+    padding: 1rem;
+}
  
- .album-view-details .album-view-title {
-     font-weight: 300;
-     font-size: 2rem;
- }
+.album-view-details .album-view-title {
+    font-weight: 300;
+    font-size: 2rem;
+}
  
- .album-view-details .album-view-artist {
+.album-view-details .album-view-artist {
      font-weight: 300;
      font-size: 1.5rem;
  }
