@@ -67,14 +67,26 @@ var setCurrentAlbum = function(album) {
  };
 
 var findParentByClassName = function(element, targetClass) {
-    if (element) {
-        var currentParent = element.parentElement;
-        while (currentParent.className != targetClass && currentParent.className !== null) {
-            currentParent = currentParent.parentElement;
+    if (element) { // if element is not null
+        if (element.currentParent === null) {
+            console.log ("No parent found");
+        } 
+            else {
+                var currentParent = element.parentElement;
+                while (currentParent.className != targetClass && currentParent.className !== null) 
+                {
+                currentParent = currentParent.parentElement;
+                } //continually loops to find the parent element
+            }
+        if (currentParent === null) {
+            console.log ("No parent found with that class name");
         }
-        return currentParent;
+            else {
+                return currentParent;
+                }
     }
-}; //continually loops to find the parent element
+    
+}; 
 
 var getSongItem = function(element) {
     switch (element.className) {
@@ -138,7 +150,9 @@ window.onload = function() {
             
             var songItem = getSongItem(event.target);
             
-            if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {songItem.innerHTML = playButtonTemplate;}
+            if (songItem.getAttribute('data-song-number') !== currentlyPlayingSong) {
+                songItem.innerHTML = playButtonTemplate;
+                }
             // changes the song number to populate with play button template as above 
             // query selector method used b/c need to return only one single element with specified class
          }
