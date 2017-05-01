@@ -106,7 +106,6 @@ var setCurrentAlbum = function(album) {
 var updateSeekBarWhileSongPlays = function() {
      if (currentSoundFile) {
          currentSoundFile.bind('timeupdate', function(event) {
-             // #11
              var seekBarFillRatio = this.getTime() / this.getDuration();
              var $seekBar = $('.seek-control .seek-bar');
  
@@ -183,7 +182,7 @@ var setSong = function(songNumber) {
         preload: true
     });
     
-    var currentVolume = 80;
+    setVolume(currentVolume);
 };
 
 var seek = function(time) {
@@ -219,6 +218,7 @@ var nextSong = function() {
     // Set a new current song
     setSong(currentSongIndex + 1);
     currentSoundFile.play();
+    updateSeekBarWhileSongPlays();
     updatePlayerBarSong();
     
     var lastSongNumber = getLastSongNumber(currentSongIndex);
@@ -247,6 +247,7 @@ var previousSong = function() {
     // Set a new current song
     setSong(songNumber + 1);
     currentSoundFile.play();
+    updateSeekBarWhileSongPlays();
     updatePlayerBarSong();
     
     var lastSongNumber = getLastSongNumber(currentSongIndex);
